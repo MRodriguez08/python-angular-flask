@@ -1,0 +1,53 @@
+<div>
+    <div class="row">
+	     <div class="col-md-4">
+	     	<img class="img-responsive" alt="" ng-src="{{avatar}}">
+	     </div>
+         <div class="col-md-4">
+            <h1 translate="customer.title.view">View</h1>
+
+            <form name="form" role="form" novalidate show-validation>
+
+				<div class="form-group" ng-class="{'has-error' : form.name.$dirty && form.name.$error.required}">
+				    <label  class="control-label" translate="customer.form.name" for="name">Name</label>
+				    <input ng-readonly="true" name="name" ng-model="model.name" type="text" class="form-control" id="name" required >
+				</div>
+				
+				<div class="form-group">
+				    <label  class="control-label" translate="customer.form.surname" for="surname">Surname</label>
+				    <input ng-readonly="true" name="surname" ng-model="model.surname" type="text" class="form-control" id="surname" >
+				</div>		
+				
+				<div class="form-group">
+				    <label  class="control-label" translate="customer.form.email" for="email">Email</label>
+				    <input ng-readonly="true" name="email" ng-model="model.email" type="text" class="form-control" id="email" >
+				</div>		
+				
+				<div class="form-group">
+				    <label class="control-label" translate="customer.form.cellphone" for="cellphone">Cellphone</label>
+				    <input ng-readonly="true" name="cellphone" ng-model="model.cellphone" type="text" class="form-control" id="cellphone" >
+				</div>		
+				
+				<div class="form-group">
+				    <label class="control-label"  translate="customer.form.address" for="address">Address</label>
+				    <textarea ng-readonly="true" name="address" ng-model="model.address" id="address" class="form-control" rows="3"></textarea>
+				</div>	
+				
+				<div class="form-group">
+				    <label class="control-label"  translate="customer.form.plan" for="plan">Plan</label>
+				    <input ng-readonly="true" name="plan" ng-model="model.plan.name" id="plan" class="form-control" rows="3"></input>
+				</div>	
+				
+				<div class="form-group">
+				    <label class="control-label"  translate="customer.form.plan" for="payment-plan">Plan</label>
+				    <input ng-readonly="true" name="payment-plan" ng-model="model.paymentPlan.name" id="payment-plan" class="form-control"></input>
+				</div>				
+
+                 <a ui-sref="customer.list">
+	             	<span class="glyphicon glyphicon-arrow-left"></span>
+	             	&#xA0;<span translate="global.buttons.back">Back</span>
+	           	</a>
+            </form>
+        </div>
+    </div>
+</div>

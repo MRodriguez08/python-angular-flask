@@ -1,0 +1,9 @@
+.gitignore~
+venv/
+**/*.pyc
+**/*.egg-info
+**/*.egg
+.project
+.pydevproject
+node_modules/
+build/

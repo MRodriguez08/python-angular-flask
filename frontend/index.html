@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+
+	<head>
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+	</head>
+	
+	<body ng-app="carsPortal">
+	
+		<div ui-view="navbar" ng-cloak=""></div>
+		
+        <div class="container">
+            <div class="well" ui-view="content"></div>
+
+<!-- 
+            <div class="footer">
+                <p translate="footer">This is your footer</p>
+            </div>
+-->
+        </div>
+ 
+ 	
+		<!-- SPELLS -->
+		<script	src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script	src="node_modules/angular/angular.min.js"></script>
+		<script	src="node_modules/angular-route/angular-route.min.js"></script>
+		<script	src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script	src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+		<script	src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+		<script	src="node_modules/angular-dynamic-locale/tmhDynamicLocale.min.js"></script>
+		<script	src="node_modules/angular-resource/angular-resource.min.js"></script>
+		<script	src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script	src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+		<script	src="node_modules/angular-cache-buster/angular-cache-buster.js"></script>
+		<script	src="node_modules/angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+		<script	src="node_modules/angular-translate/dist/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+		<script	src="node_modules/bootbox/bootbox.min.js"></script>
+		<script	src="node_modules/ng-file-upload/dist/ng-file-upload-all.min.js"></script>
+		
+		<!-- <script	src="assets/bower/angular-ui-grid/ui-grid.js"></script> -->		
+		        
+		<script src="js/app/app.js"></script>
+		<script src="js/app/app.constants.js"></script> 		
+		
+
+		
+        <script src="js/components/auth/provider/auth.session.service.js"></script>
+        <script src="js/components/auth/auth.service.js"></script>
+        <script src="js/components/auth/principal.service.js"></script>
+        <script src="js/components/auth/services/account.service.js"></script>
+        <script src="js/components/auth/services/activate.service.js"></script>
+        <script src="js/components/auth/services/password.service.js"></script>
+        <script src="js/components/auth/services/register.service.js"></script>
+		<script src="js/components/navbar/navbar.directive.js"></script>
+		<script src="js/components/navbar/navbar.controller.js"></script>
+		<script src="js/components/language/language.service.js"></script>
+        <script src="js/components/language/language.controller.js"></script>
+        
+	</body>
+</html>

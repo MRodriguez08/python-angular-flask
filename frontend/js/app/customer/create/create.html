@@ -1,0 +1,82 @@
+<div>
+    <div class="row">
+    	<div class="col-md-4">
+	     	<img class="img-responsive" alt="" ng-src="{{avatar}}">
+	     </div>
+        <div class="col-md-4">
+            <h1 translate="customer.title.create">Create</h1>
+
+			<div ng-show="success">			
+	            <div class="alert alert-success"  >
+	                {{ successMessage }}
+	            </div>
+	            <a ui-sref="customer.list">
+	             	<span class="glyphicon glyphicon-wrench"></span>
+	             	&#xA0;<span>List</span>
+	           	</a> | 
+	           	<a ui-sref="customer.create">
+	             	<span class="glyphicon glyphicon-wrench"></span>
+	             	&#xA0;<span>Create</span>
+	           	</a>
+			</div>
+
+            <div class="alert alert-danger" ng-show="error" >
+                {{ errorMessage }}
+            </div>
+
+            <form ng-show="!success" name="form" role="form" novalidate ng-submit="create()" show-validation>
+
+				<div class="form-group" ng-class="{'has-error' : form.name.$dirty && form.name.$error.required}">
+				    <label  class="control-label" translate="customer.form.name" for="name">Name</label>
+				    <input name="name" ng-model="model.name" type="text" class="form-control" id="name" required >
+				</div>
+				
+				<div class="form-group">
+				    <label  class="control-label" translate="customer.form.surname" for="surname">Surname</label>
+				    <input name="surname" ng-model="model.surname" type="text" class="form-control" id="surname" >
+				</div>		
+				
+				<div class="form-group">
+				    <label  class="control-label" translate="customer.form.email" for="email">Email</label>
+				    <input name="email" ng-model="model.email" type="text" class="form-control" id="email" >
+				</div>		
+				
+				<div class="form-group">
+				    <label  class="control-label" translate="customer.form.cellphone" for="cellphone">Cellphone</label>
+				    <input name="cellphone" ng-model="model.cellphone" type="text" class="form-control" id="cellphone" >
+				</div>		
+				
+				<div class="form-group">
+				    <label translate="customer.form.address" for="address">Address</label>
+				    <textarea name="address" ng-model="model.address" id="address" class="form-control" rows="3"></textarea>
+				</div>	
+				
+				<div class="form-group" ng-class="{'has-error' : form.plan.$dirty && form.plan.$error.required}">
+				    <label class="control-label" translate="customer.form.plan" for="plan">Plan</label>
+				    <select required id="plan" name="plan" class="form-control" ng-model="model.plan" ng-options="item as item.name for item in plansList">
+				    <option translate="customer.placeholders.select.plan" value="">Select the customer plan</option>
+					</select>
+				</div>	
+				
+  				<div class="form-group" ng-class="{'has-error' : form.paymentPlan.$dirty && form.paymentPlan.$error.required}">
+				    <label class="control-label" translate="customer.form.paymentPlan" for="paymentPlan">Plan</label>
+				    <select ng-change="updateValidCost()" required id="paymentPlan" name="paymentPlan" class="form-control" ng-model="model.paymentPlan" ng-options="item as item.name for item in paymentPlansList">
+				    <option translate="customer.placeholders.select.paymentPlan" value="">Select the payment plan</option>
+					</select>
+				</div>	
+				
+				<div class="form-group">
+				    <label translate="customer.form.avatar" for="avatar"></label>
+				    <input id="avatar" type="file" ngf-select ng-model="profilePicture" name="file" accept="image/*" >	
+			  	</div>		
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="global.buttons.create">Create</button>
+                 <a ui-sref="customer.list">
+	             	<span class="glyphicon glyphicon-arrow-left"></span>
+	             	&#xA0;<span translate="global.buttons.back">Back</span>
+	           	</a>
+            </form>
+        </div>
+    </div>
+</div>
+
