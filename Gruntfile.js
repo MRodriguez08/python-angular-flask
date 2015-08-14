@@ -53,7 +53,9 @@ module.exports = function(grunt) {
             'node_modules/angular-translate/dist/angular-translate-loader-partial/angular-translate-loader-partial.min.js',
             'node_modules/angular-i18n/*',
             'node_modules/bootbox/bootbox.min.js',            
-            'node_modules/ng-file-upload/dist/ng-file-upload-all.min.js'
+            'node_modules/ng-file-upload/dist/ng-file-upload-all.min.js',
+            'node_modules/angular-ui-grid/ui-grid.min.js',
+            'node_modules/angular-ui-grid/ui-grid.min.css'
             
             
             /*                    

@@ -23,12 +23,18 @@ def json_content(fields=[]):
                 content = request.get_json()
                 if content is None:
                     return response_with_status({'message':'content is not json'}, 400)
-                for field in fields:
+                for field in fields:                    
+                    field_type = ''
+                    field_name = field
                     allow_empty = '!' not in field
                     if not allow_empty:
                         field_data = field.split('!')
-                        field_type = field_data[0]
-                        field_name = field_data[1]                                        
+                        field_name = field_data[1]                        
+                    has_type = '%' in field
+                    if has_type:
+                        field_data = field_name.split('%')
+                        field_name = field_data[0]
+                        field_type = field_data[1]                                                                
                     if field_name not in content:
                         return response_with_status({'message': ('missing field %s' % field_name)}, 400)                    
                     if not allow_empty and content.get(field_name) == '':

@@ -1,26 +1,29 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('carsPortal')
+  angular.module('gymAdminApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('login', {
-                parent: 'account',
-                url: '/login',
+            .state('plan.create', {
+                parent: 'plan',
+                url: '/createPlan',
                 data: {
-                    roles: [], 
-                    pageTitle: 'login.title'
+                	roles: ['ROLE_ADMIN'], 
+                    pageTitle: 'plan.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/account/login/login.html',
-                        controller: 'LoginController'
+                        templateUrl: 'app/plan/create/create.html',
+                        controller: 'CreatePlanController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('login');
+                        $translatePartialLoader.addPart('plan');
                         return $translate.refresh();
                     }]
                 }
             });
     });
+
+})();

@@ -23,7 +23,7 @@ def get_user(id):
 
 
 @app.route('/api/users', methods=['POST'])
-@json_content(fields=['e!email'])
+@json_content(fields=['!email%e'])
 def update_user():
     data = request.get_json()
     user_service = UserService()

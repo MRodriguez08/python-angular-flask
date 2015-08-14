@@ -1,0 +1,49 @@
+<div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1 translate="plan.title.update">Update</h1>
+
+			<div ng-show="success">			
+	            <div class="alert alert-success"  >
+	                {{ successMessage }}
+	            </div>
+	            <a ui-sref="listPlan">
+	             	<span class="glyphicon glyphicon-wrench"></span>
+	             	&#xA0;<span>Listado de planes</span>
+	           	</a> | 
+	           	<a ui-sref="createPlan">
+	             	<span class="glyphicon glyphicon-wrench"></span>
+	             	&#xA0;<span>Update plan</span>
+	           	</a>
+			</div>
+
+            <div class="alert alert-danger" ng-show="error" >
+                {{ errorMessage }}
+            </div>
+
+            <form ng-show="!success" name="form" role="form" novalidate ng-submit="create()" show-validation>
+
+				<div class="form-group" ng-class="{'has-error' : form.name.$dirty && form.name.$error.required}">
+				    <label  class="control-label" translate="plan.form.name" for="name">Name</label>
+				    <input name="name" ng-model="planModel.name" type="text" class="form-control" id="name" required >
+				</div>
+				<div class="form-group">
+				    <label translate="plan.form.description" for="description">Description</label>
+				    <textarea ng-model="planModel.description" id="description" class="form-control" rows="3"></textarea>
+				</div>
+				<div class="form-group" ng-class="{'has-error' : form.cost.$dirty && (form.cost.$error.required || form.cost.$invalid) }">
+				    <label class="control-label" translate="plan.form.cost" for="cost">Cost</label>
+				    <input name="cost" ng-model="planModel.cost" type="number" class="form-control" id="cost" required >
+				</div>
+				
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="global.buttons.confirm">Register</button>
+                 <a ui-sref="plan.list">
+	             	<span class="glyphicon glyphicon-arrow-left"></span>
+	             	&#xA0;<span translate="global.buttons.back">Back</span>
+	           	</a>
+            </form>
+        </div>
+    </div>
+</div>
+

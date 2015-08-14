@@ -25,7 +25,8 @@
     "bootbox": "~4.4.0",
     "angular-file-upload": "~1.6.4",
     "ng-file-upload": "~4.0.4",
-    "font-awesome": "~4.3.0"
+    "font-awesome": "~4.3.0",
+    "angular-ui-grid": "~3.0.4"
   },
   "engines": {
     "node": ">=0.10.0"

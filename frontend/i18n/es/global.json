@@ -1,0 +1,120 @@
+{
+    "global": {
+        "title": "CarsPortal",
+        "buttons": {
+            "edit": "Editar",
+            "refresh": "Refrescar",
+            "delete": "Eliminar",
+            "create": "Crear",
+            "back": "Volver",
+            "accept": "Aceptar",
+            "confirm": "Confirmar",
+            "cancel": "Cancelar"
+        },
+        "menu": {
+            "home": "Home",
+            "plans": {
+                "main": "Planes",
+                "list": "Listado de planes",
+                "create": "Crear plan",
+                "attributes": {
+                    "id": "id",
+                    "name": "Nombre",
+                    "description": "Descripcion",
+                    "cost": "Costo"
+                }
+            },
+            "customers": {
+                "main": "Clientes",
+                "list": "Listado de clientes",
+                "create": "Crear cliente",
+                "attributes": {
+                    "id": "id",
+                    "name": "Nombre",
+                    "surname": "Apellido",
+                    "email": "Email",
+                    "cellphone": "Telefono",
+                    "address": "Direccion"
+                }
+            },
+            "payments": {
+                "main": "Pagos",
+                "list": "Listado de pagos",
+                "create": "Crear pago",
+                "attributes": {
+                    "id": "id",
+                    "name": "Nombre",
+                    "surname": "Apellido",
+                    "email": "Email",
+                    "cellphone": "Telefono",
+                    "address": "Direccion"
+                }
+            },
+            "account": {
+                "main": "Cuenta",
+                "login": "Ingresar",
+                "logout": "Salir"
+            },
+            "admin": {
+                "main": "Administration",
+                "tracker": "User tracker",
+                "metrics": "Metrics",
+                "health": "Health",
+                "configuration": "Configuration",
+                "logs": "Logs",
+                "audits": "Audits",
+                "apidocs": "API",
+                "database": "Database"
+            },
+            "language": "Language"
+        },
+        "form": {
+            "username": "Usuario",
+            "username.placeholder": "escribe aqui tu usuario",
+            "newpassword": "New password",
+            "newpassword.placeholder": "escribe aqui tu nueva contraseña",
+            "confirmpassword": "Confirmacion de nueva contraseña",
+            "confirmpassword.placeholder": "confirma aqui tu nueva contraseña",
+            "email": "E-mail",
+            "email.placeholder": "tu e-mail"
+        },
+        "placeholders": {
+        	"all" : "Todos"
+        },
+        "tooltip" : {
+			"update" : "Modificar",
+			"view" : "Ver mas",
+			"delete" : "Eliminar",
+			"pay" : "Pagar"
+        },
+        "messages": {
+            "info": {
+                "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
+                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
+            },
+            "error": {
+                "internalServerError" : "Error interno de la aplicacion"
+            },
+            "validate": {
+                "newpassword": {
+                    "required": "Your password is required.",
+                    "minlength": "Your password is required to be at least 5 characters.",
+                    "maxlength": "Your password cannot be longer than 50 characters.",
+                    "strength": "Password strength:"
+                },
+                "confirmpassword": {
+                    "required": "Your confirmation password is required.",
+                    "minlength": "Your confirmation password is required to be at least 5 characters.",
+                    "maxlength": "Your confirmation password cannot be longer than 50 characters."
+                },
+                "email": {
+                    "required": "Your e-mail is required.",
+                    "invalid": "Your e-mail is invalid.",
+                    "minlength": "Your e-mail is required to be at least 5 characters.",
+                    "maxlength": "Your e-mail cannot be longer than 50 characters."
+                }
+            }
+        }
+    },
+    "footer": "This is your footer"
+}

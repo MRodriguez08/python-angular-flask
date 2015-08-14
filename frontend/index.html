@@ -6,6 +6,7 @@
 	<head>
 		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css" />
 	</head>
 	
 	<body ng-app="carsPortal">
@@ -14,12 +15,6 @@
 		
         <div class="container">
             <div class="well" ui-view="content"></div>
-
-<!-- 
-            <div class="footer">
-                <p translate="footer">This is your footer</p>
-            </div>
--->
         </div>
  
  	
@@ -40,24 +35,33 @@
 		<script	src="node_modules/bootbox/bootbox.min.js"></script>
 		<script	src="node_modules/ng-file-upload/dist/ng-file-upload-all.min.js"></script>
 		
-		<!-- <script	src="assets/bower/angular-ui-grid/ui-grid.js"></script> -->		
+		<script	src="node_modules/angular-ui-grid/ui-grid.min.js"></script>		
 		        
-		<script src="js/app/app.js"></script>
-		<script src="js/app/app.constants.js"></script> 		
+		<script src="app/app.js"></script>
+		<script src="app/app.constants.js"></script>
 		
-
+		<script src="app/account/account.js"></script>
+		<script src="app/account/login/login.controller.js"></script>
+		<script src="app/account/login/login.js"></script>
 		
-        <script src="js/components/auth/provider/auth.session.service.js"></script>
-        <script src="js/components/auth/auth.service.js"></script>
-        <script src="js/components/auth/principal.service.js"></script>
-        <script src="js/components/auth/services/account.service.js"></script>
-        <script src="js/components/auth/services/activate.service.js"></script>
-        <script src="js/components/auth/services/password.service.js"></script>
-        <script src="js/components/auth/services/register.service.js"></script>
-		<script src="js/components/navbar/navbar.directive.js"></script>
-		<script src="js/components/navbar/navbar.controller.js"></script>
-		<script src="js/components/language/language.service.js"></script>
-        <script src="js/components/language/language.controller.js"></script>
+		<script src="app/brand/brand.js"></script>
+		<script src="app/brand/list/list.controller.js"></script>
+		<script src="app/brand/list/list.js"></script>
+		
+		<script src="components/brand/resource.js"></script>
+        <script src="components/brand/service.js"></script>
+		
+        <script src="components/auth/provider/auth.session.service.js"></script>
+        <script src="components/auth/auth.service.js"></script>
+        <script src="components/auth/principal.service.js"></script>
+        <script src="components/auth/services/account.service.js"></script>
+        <script src="components/auth/services/activate.service.js"></script>
+        <script src="components/auth/services/password.service.js"></script>
+        <script src="components/auth/services/register.service.js"></script>
+		<script src="components/navbar/navbar.directive.js"></script>
+		<script src="components/navbar/navbar.controller.js"></script>
+		<script src="components/language/language.service.js"></script>
+        <script src="components/language/language.controller.js"></script>
         
 	</body>
 </html>
