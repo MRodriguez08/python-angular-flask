@@ -6,11 +6,10 @@ from flask import  jsonify, request
 from carsportal.core.decorators import requires_roles, json_content
 
 @app.route('/api/users', methods=['GET'])
-@requires_roles([])
 def get_users():
     user_service = UserService()
-    list = user_service.get_all()
-    return response_with_status(json_list=[i.serialize for i in list])
+    list = user_service.get_collection()
+    return response_with_status(list)
 
 @app.route('/api/users/<int:id>', methods=['GET'])
 def get_user(id):
@@ -21,28 +20,22 @@ def get_user(id):
     else:
         return response_with_status(user.serialize)
 
-
 @app.route('/api/users', methods=['POST'])
-@json_content(fields=['!email%e'])
-def update_user():
-    data = request.get_json()
-    user_service = UserService()
-    op = user_service.create(data)
-    if op is True:
-        return jsonify({'message': 'User created'}), 201
-    else:
-        return jsonify({'message': op}), 400
-
-
-@app.route('/api/users', methods=['PUT'])
+@json_content(fields=['!email%e','!nick', 'name','surname'])
 def create_user():
     data = request.get_json()
     user_service = UserService()
     op = user_service.create(data)
-    if op is True:
-        return response_with_status({'message': 'User updated'}, 204)
-    else:
-        return response_with_status({'message': op}, 400)
+    return jsonify({'message': 'User created'}), 201
+
+
+@app.route('/api/users/<int:id>', methods=['PUT'])
+@json_content(fields=['!email%e','!nick', 'name','surname'])
+def update_user(id):
+    data = request.get_json()
+    user_service = UserService()
+    op = user_service.update(id, data)
+    return response_with_status(op.to_dict(), 200)
 
 
 @app.route('/api/users/<int:id>', methods=['DELETE'])
@@ -70,3 +63,29 @@ def register():
     db.session.close()
     return response_with_status({'result': status})
 
+@app.route('/api/account', methods=['POST'])
+def get_account():
+    json_data = request.json
+    user = User(
+        email=json_data['email'],
+        password=json_data['password']
+    )
+    try:
+        db.session.add(user)
+        db.session.commit()
+        status = 'success'
+    except: 
+        status = 'this user is already registered'
+    db.session.close()
+    return response_with_status({'result': status})
+
+@app.route('/api/login', methods=['POST'])
+@json_content(fields=['!user', '!password'])
+def login():
+    json_data = request.json
+    service = UserService()
+    auth = service.login(json_data.get('user'), json_data.get('password'))
+    if auth is None:
+        return response_with_status({'message': 'invalid username or password'}, 403)        
+    else:
+        return response_with_status({'message': 'you are logged in'}, 200)

@@ -1,8 +1,6 @@
 from carsportal import db
-from carsportal.core.model import BaseModel
 
-
-class User(db.Model, BaseModel):
+class User(db.Model):
 
     __tablename__ = 'users'
 
@@ -14,7 +12,7 @@ class User(db.Model, BaseModel):
     phone_number = db.Column(db.String(20), nullable=True)
     enabled = db.Column(db.SmallInteger)
 
-    def __init__(self, email, nick, password, name, phone_number, device_id, enabled):
+    def __init__(self, email, nick, password, name, phone_number, enabled):
         self.email = email
         self.nick = nick
         self.password = password
@@ -25,8 +23,7 @@ class User(db.Model, BaseModel):
     def __repr__(self):
         return '<User %r>' % self.email
 
-    @property
-    def serialize(self):
+    def to_dict(self):
        return {
            'id': self.id,
            'email': self.email,
