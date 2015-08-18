@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    secret: grunt.file.readJSON('secret.json'),
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -103,6 +104,24 @@ module.exports = function(grunt) {
                 VERSION: ''
             }
         }
+    },
+    
+    environments: {
+        options: {
+          local_path: 'frontend',
+          current_symlink: 'current',
+          deploy_path: '/var/www/html/'
+        },
+        development: {
+            options: {
+                host: '<%= secret.development.host %>',
+                username: '<%= secret.development.username %>',
+                password: '<%= secret.development.password %>',
+                port: '<%= secret.development.port %>',
+                debug: true,
+                releases_to_keep: '3'
+            }
+        }
     }
     
   });
@@ -110,6 +129,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');  
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-ng-constant');
+  grunt.loadNpmTasks('grunt-ssh-deploy');
 
   // Default task(s).
   grunt.registerTask('make-all', ['copy:assets']);

@@ -4,12 +4,9 @@ angular.module('carsPortal')
     .factory('AuthServerProvider', function loginService($http, localStorageService, $window) {
         return {
             login: function(credentials) {
-                var data = 'j_username=' + encodeURIComponent(credentials.username) +
-                    '&j_password=' + encodeURIComponent(credentials.password) +
-                    '&_spring_security_remember_me=' + credentials.rememberMe + '&submit=Login';
-                return $http.post('api/authentication', data, {
+                return $http.post('api/authentication', credentials, {
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/json'
                     }
                 }).success(function (response) {
                     localStorageService.set('token', $window.btoa(credentials.username + ':' + credentials.password));

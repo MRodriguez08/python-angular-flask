@@ -5,13 +5,13 @@ from carsportal.core.responseutils import response_with_status
 from flask import request
 from carsportal.core.decorators import requires_roles, json_content
 
-@app.route('/api/brand', methods=['GET'])
+@app.route('/brand', methods=['GET'])
 def get_brands():
     service = BrandService()
     list = service.get_collection()
     return response_with_status(list)
 
-@app.route('/api/brand/<int:id>', methods=['GET'])
+@app.route('/brand/<int:id>', methods=['GET'])
 def get_brand(id):
     service = BrandService()
     e = service.get(id)
@@ -20,7 +20,7 @@ def get_brand(id):
     else:
         return response_with_status(e.to_dict())
 
-@app.route('/api/brand', methods=['POST'])
+@app.route('/brand', methods=['POST'])
 @json_content(fields=['!name'])
 def create_brand():
     data = request.get_json()
@@ -29,7 +29,7 @@ def create_brand():
     return response_with_status({'message': 'success'}, 201)
 
 
-@app.route('/api/brand/<int:id>', methods=['PUT'])
+@app.route('/brand/<int:id>', methods=['PUT'])
 @json_content(fields=['!name'])
 def update_brand(id):
     data = request.get_json()
@@ -38,7 +38,7 @@ def update_brand(id):
     return response_with_status({'message': 'success'}, 200)
 
 
-@app.route('/api/brand/<int:id>', methods=['DELETE'])
+@app.route('/brand/<int:id>', methods=['DELETE'])
 def delete_brand(id):
     service = BrandService()
     result = service.delete(id)

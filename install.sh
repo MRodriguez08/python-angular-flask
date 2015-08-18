@@ -22,10 +22,11 @@ cp sysconfig/carsportal.config /etc/carsportal
 
 mkdir -p /var/www/carsportal
 cp sysconfig/carsportal.wsgi /var/www/carsportal
-cp sysconfig/apache_backend.conf /etc/apache2/sites-enabled/carsportal.conf
-cp sysconfig/apache_frontend.conf /etc/apache2/sites-enabled/carsportalfe.conf
+cp sysconfig/apache_site.conf /etc/apache2/sites-enabled/carsportal.conf
 
 
 python setup.py install
+python -c "from carsportal.db.data.populate import populate;populate()"
+
 
 service apache2 restart

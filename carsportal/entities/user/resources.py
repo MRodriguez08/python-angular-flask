@@ -2,16 +2,16 @@ from carsportal import app
 from carsportal.entities.user.services import UserService
 from carsportal.entities.user.models import User
 from carsportal.core.responseutils import response_with_status
-from flask import  jsonify, request
+from flask import  jsonify, request, session, json
 from carsportal.core.decorators import requires_roles, json_content
 
-@app.route('/api/users', methods=['GET'])
+@app.route('/users', methods=['GET'])
 def get_users():
     user_service = UserService()
     list = user_service.get_collection()
     return response_with_status(list)
 
-@app.route('/api/users/<int:id>', methods=['GET'])
+@app.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
     user_service = UserService()
     user = user_service.get(id)
@@ -20,16 +20,7 @@ def get_user(id):
     else:
         return response_with_status(user.serialize)
 
-@app.route('/api/users', methods=['POST'])
-@json_content(fields=['!email%e','!nick', 'name','surname'])
-def create_user():
-    data = request.get_json()
-    user_service = UserService()
-    op = user_service.create(data)
-    return jsonify({'message': 'User created'}), 201
-
-
-@app.route('/api/users/<int:id>', methods=['PUT'])
+@app.route('/users/<int:id>', methods=['PUT'])
 @json_content(fields=['!email%e','!nick', 'name','surname'])
 def update_user(id):
     data = request.get_json()
@@ -38,7 +29,7 @@ def update_user(id):
     return response_with_status(op.to_dict(), 200)
 
 
-@app.route('/api/users/<int:id>', methods=['DELETE'])
+@app.route('/users/<int:id>', methods=['DELETE'])
 def delete_user(id):
     user_service = UserService()
     result = user_service.delete(id)
@@ -47,39 +38,15 @@ def delete_user(id):
     else:
         return response_with_status({'message': 'User deleted'}, 204)
     
-@app.route('/api/register', methods=['POST'])
+@app.route('/register', methods=['POST'])
+@json_content(fields=['!email%e','!nick', 'name','surname', '!password'])
 def register():
-    json_data = request.json
-    user = User(
-        email=json_data['email'],
-        password=json_data['password']
-    )
-    try:
-        db.session.add(user)
-        db.session.commit()
-        status = 'success'
-    except: 
-        status = 'this user is already registered'
-    db.session.close()
-    return response_with_status({'result': status})
+    data = request.get_json()
+    user_service = UserService()
+    op = user_service.create(data)
+    return response_with_status({'message': 'registered successfully'}, 201)
 
-@app.route('/api/account', methods=['POST'])
-def get_account():
-    json_data = request.json
-    user = User(
-        email=json_data['email'],
-        password=json_data['password']
-    )
-    try:
-        db.session.add(user)
-        db.session.commit()
-        status = 'success'
-    except: 
-        status = 'this user is already registered'
-    db.session.close()
-    return response_with_status({'result': status})
-
-@app.route('/api/login', methods=['POST'])
+@app.route('/authentication', methods=['POST'])
 @json_content(fields=['!user', '!password'])
 def login():
     json_data = request.json
@@ -88,4 +55,18 @@ def login():
     if auth is None:
         return response_with_status({'message': 'invalid username or password'}, 403)        
     else:
+        session['user'] = json.dumps(auth.to_dict())
         return response_with_status({'message': 'you are logged in'}, 200)
+
+@app.route('/account', methods=['GET'])
+@requires_roles(['admin', 'user'])
+def get_account():
+    user_service = UserService()
+    sess_user = json.loads(session['user'])
+    user = user_service.get(int(sess_user.get('id')))
+    if user is None:
+        return response_with_status({'message': 'user not found'}, 404)
+    else:
+        return response_with_status(user.to_dict())
+    
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

@@ -8,3 +8,4 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 SQLALCHEMY_DATABASE_URI = 'mysql://root:ms_admin@localhost/carsportal'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, '/', 'db')
+SECRET_KEY = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

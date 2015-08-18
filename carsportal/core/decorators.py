@@ -1,15 +1,17 @@
 
 from functools import wraps
-from flask import request
+from flask import request, session, json
 from carsportal.core.responseutils import response_with_status
 from carsportal.core.typesutils import is_boolean, is_email, is_number
 
-def requires_roles(*roles):
+def requires_roles(roles):
     def wrapper(f):
         @wraps(f)
         def wrapped(*args, **kwargs):
-            if 'xxxx' not in roles:
-                return response_with_status({'message':'you are not authorized'}, 403)
+            user = json.loads(session['user'])
+            user_roles = user.get('roles')
+            if user_roles is None or str(user_roles[0].get('name')) not in roles:
+                return response_with_status({'message':'you are not authorized. %r not in  %r' % (str(user_roles[0].get('name')) , roles) }, 403)
             return f(*args, **kwargs)
         return wrapped
     return wrapper

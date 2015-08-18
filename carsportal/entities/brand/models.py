@@ -1,6 +1,4 @@
 from carsportal import db
-from carsportal.core.model import BaseModel
-
 
 class Brand(db.Model):
 

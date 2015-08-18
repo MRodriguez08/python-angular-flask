@@ -8,7 +8,7 @@
 	                parent: 'brand',
 	                url: '/listBrand',
 	                data: {
-	                    roles: [ ], 
+	                    roles: [ 'admin' ], 
 	                    pageTitle: 'brand.title.list'
 	                },
 	                views: {
