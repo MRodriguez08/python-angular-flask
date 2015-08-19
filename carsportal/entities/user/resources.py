@@ -4,6 +4,10 @@ from carsportal.entities.user.models import User
 from carsportal.core.responseutils import response_with_status
 from flask import  jsonify, request, session, json
 from carsportal.core.decorators import requires_roles, json_content
+from carsportal.core.logger import get_logger
+
+logger = get_logger(__name__)
+logger.info('users resource')
 
 @app.route('/users', methods=['GET'])
 def get_users():
@@ -58,15 +62,25 @@ def login():
         session['user'] = json.dumps(auth.to_dict())
         return response_with_status({'message': 'you are logged in'}, 200)
 
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.pop('user', None)
+    return response_with_status({'message': 'invalid username or password'}, 403)
+
 @app.route('/account', methods=['GET'])
 @requires_roles(['admin', 'user'])
 def get_account():
-    user_service = UserService()
-    sess_user = json.loads(session['user'])
-    user = user_service.get(int(sess_user.get('id')))
-    if user is None:
-        return response_with_status({'message': 'user not found'}, 404)
-    else:
-        return response_with_status(user.to_dict())
+    try:
+        user_service = UserService()
+        logger.info('session[user] = %s ' % str(session['user']))
+        sess_user = json.loads('{}' if session['user'] is None else str(session['user']))
+        user = user_service.get(int(sess_user.get('id')))
+        if user is None:
+            return response_with_status({'message': 'user not found'}, 404)
+        else:
+            return response_with_status(user.to_dict())
+    except Exception as e:
+        logger.exception(e)
+        raise e
     
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

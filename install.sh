@@ -24,9 +24,14 @@ mkdir -p /var/www/carsportal
 cp sysconfig/carsportal.wsgi /var/www/carsportal
 cp sysconfig/apache_site.conf /etc/apache2/sites-enabled/carsportal.conf
 
+mkdir -p /var/log/carsportal
+touch /var/log/carsportal/carsportal.log
+chown www-data:www-data /var/log/carsportal/carsportal.log
+
 
 python setup.py install
 python -c "from carsportal.db.data.populate import populate;populate()"
 
 
 service apache2 restart
+service rsyslog restart

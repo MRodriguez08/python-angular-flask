@@ -15,10 +15,14 @@
 	                rememberMe: $scope.rememberMe
 	            }).then(function (data) {
 	                $scope.authenticationError = false;
-	                $state.go('site.brand.list');
+	                $state.go('brand.list');
 	            }).catch(function (err) {
 	                $scope.authenticationError = true;
 	            });
 	        };
+	        
+	        $scope.username = 'mrodriguez';
+            $scope.password = 'mrodriguez';
+	        
 	    }]);
 })()

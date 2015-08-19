@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gymAdminApp')
+angular.module('carsPortal')
     .config(function ($stateProvider) {
         $stateProvider
             .state('logout', {

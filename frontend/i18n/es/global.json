@@ -13,58 +13,11 @@
         },
         "menu": {
             "home": "Home",
-            "plans": {
-                "main": "Planes",
-                "list": "Listado de planes",
-                "create": "Crear plan",
-                "attributes": {
-                    "id": "id",
-                    "name": "Nombre",
-                    "description": "Descripcion",
-                    "cost": "Costo"
-                }
-            },
-            "customers": {
-                "main": "Clientes",
-                "list": "Listado de clientes",
-                "create": "Crear cliente",
-                "attributes": {
-                    "id": "id",
-                    "name": "Nombre",
-                    "surname": "Apellido",
-                    "email": "Email",
-                    "cellphone": "Telefono",
-                    "address": "Direccion"
-                }
-            },
-            "payments": {
-                "main": "Pagos",
-                "list": "Listado de pagos",
-                "create": "Crear pago",
-                "attributes": {
-                    "id": "id",
-                    "name": "Nombre",
-                    "surname": "Apellido",
-                    "email": "Email",
-                    "cellphone": "Telefono",
-                    "address": "Direccion"
-                }
-            },
             "account": {
                 "main": "Cuenta",
                 "login": "Ingresar",
-                "logout": "Salir"
-            },
-            "admin": {
-                "main": "Administration",
-                "tracker": "User tracker",
-                "metrics": "Metrics",
-                "health": "Health",
-                "configuration": "Configuration",
-                "logs": "Logs",
-                "audits": "Audits",
-                "apidocs": "API",
-                "database": "Database"
+                "logout": "Salir",
+                "register": "Registrarme"
             },
             "language": "Language"
         },

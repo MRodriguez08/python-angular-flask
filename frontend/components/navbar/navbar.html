@@ -11,92 +11,12 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav nav-pills navbar-right">
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-time"></span>
-                            <span class="hidden-tablet" translate="global.menu.plans.main">
-                                Plans
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" >
-                        	<a ui-sref="plan.list">
-                        		<span class="glyphicon glyphicon-th-list"></span>
-                            	&#xA0;<span translate="global.menu.plans.list">List plans</span>
-                          	</a>
-                       	</li>
-                       	<li ui-sref-active="active" >
-                        	<a ui-sref="plan.create">
-                            	<span class="glyphicon glyphicon-plus-sign"></span>
-                            	&#xA0;<span translate="global.menu.plans.create">Create plan</span>
-                          	</a>
-                       	</li>
-                    </ul>
-                </li>
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <i class="fa fa-users"></i>
-                            <span class="hidden-tablet" translate="global.menu.customers.main">
-                                Customers
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" >
-                        	<a ui-sref="customer.list">
-                        		<i class="fa fa-th-list"></i>
-                            	&#xA0;<span translate="global.menu.customers.list">Listar clientes</span>
-                          	</a>
-                       	</li>
-                       	<li ui-sref-active="active" >
-                        	<a ui-sref="customer.create">
-                            	<span class="glyphicon glyphicon-plus-sign"></span>
-                            	&#xA0;<span translate="global.menu.customers.create">Crear cliente</span>
-                          	</a>
-                       	</li>
-                    </ul>
-                </li>
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-usd"></span>
-                            <span class="hidden-tablet" translate="global.menu.payments.main">
-                                Plans
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" >
-                        	<a ui-sref="payment.list">
-                        		<span class="glyphicon glyphicon-th-list"></span>
-                            	&#xA0;<span translate="global.menu.payments.list">List payments</span>
-                          	</a>
-                       	</li>
-                    </ul>
-                </li>
-                <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-	                    <span>
-	                        <span class="glyphicon glyphicon-user"></span>
-	                        <span class="hidden-tablet" translate="global.menu.account.main">
-	                            Account
-	                        </span>
-	                        <b class="caret"></b>
-	                    </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>
-                            &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span>
-                            &#xA0;<span translate="global.menu.account.login">Authenticate</span></a></li>
-                    </ul>
-                </li>
+                <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>
+                    &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
+                <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="account.login"><span class="glyphicon glyphicon-log-in"></span>
+                    &#xA0;<span translate="global.menu.account.login">Authenticate</span></a></li>
+               	<li ui-sref-active="active" ng-switch-when="false"><a ui-sref="account.register"><span class="glyphicon glyphicon-log-in"></span>
+                    &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
             </ul>
         </div>
     </div>

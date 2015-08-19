@@ -38,7 +38,7 @@ class User(db.Model):
            'nick': self.nick,
            'name': self.name,
            'phone_number': self.phone_number,
-           'roles' : [role.to_dict()
+           'roles' : [role.to_dict().get('name')
                                 for role in self.roles]
        }
 

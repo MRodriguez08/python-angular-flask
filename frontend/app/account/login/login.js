@@ -4,7 +4,7 @@
 	angular.module('carsPortal')
 	    .config(function ($stateProvider) {
 	        $stateProvider
-	            .state('login', {
+	            .state('account.login', {
 	                parent: 'account',
 	                url: '/login',
 	                data: {

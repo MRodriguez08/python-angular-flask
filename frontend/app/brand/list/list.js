@@ -4,7 +4,7 @@
 	angular.module('carsPortal')
 	    .config(function ($stateProvider) {
 	        $stateProvider
-	            .state('list', {
+	            .state('brand.list', {
 	                parent: 'brand',
 	                url: '/listBrand',
 	                data: {

@@ -56,17 +56,9 @@ module.exports = function(grunt) {
             'node_modules/bootbox/bootbox.min.js',            
             'node_modules/ng-file-upload/dist/ng-file-upload-all.min.js',
             'node_modules/angular-ui-grid/ui-grid.min.js',
-            'node_modules/angular-ui-grid/ui-grid.min.css'
-            
-            
-            /*                    
-            'bower_components/angular-ui-grid/ui-grid.css',
-            'bower_components/angular-ui-grid/ui-grid.svg',
-            'bower_components/angular-ui-grid/ui-grid.ttf',
-            'bower_components/angular-ui-grid/ui-grid.woff',
-            'bower_components/angular-ui-grid/ui-grid.js',
-            */
-            
+            'node_modules/angular-ui-grid/ui-grid.min.css',
+            'node_modules/angular-ui-grid/ui-grid.woff',
+            'node_modules/angular-ui-grid/ui-grid.ttf'            
             ], 
           dest: 'frontend',
 		  filter: 'isFile'
