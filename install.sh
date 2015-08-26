@@ -14,6 +14,8 @@ apt-get -y install python-pip
 apt-get -y install apache2
 apt-get install libapache2-mod-wsgi
 apt-get install python-mysqldb
+apt-get install python-dev
+apt-get install libffi-dev
 
 pip install setuptools==18.1
 

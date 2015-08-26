@@ -2,22 +2,25 @@
   'use strict';
 
   angular.module('carsPortal')
-    .factory('CustomerService', ['$rootScope', '$http', 'Upload', 'CustomerResource', 'PendingImageResource', function ($rootScope, $http, Upload, CustomerResource, PendingImageResource) {
+    .factory('AccountService', ['$rootScope', '$http', 'Upload', 'AccountResource', 'PasswordResource', function ($rootScope, $http, Upload, AccountResource, PasswordResource) {
         return {
+        	/*
         	getImageSrc: function(img){
         		return img != null ? 'images/customers/' + img : 'images/unknown-user.png';
         	},
+        	*/
             getAll: function (data, callback) {
                 var cb = callback || angular.noop;
 
-                return CustomerResource.query(data,
+                return AccountResource.query(data,
                     function (response) {
                         return cb(response);
                     },
                     function (err) {
                         return cb(err);
                     }.bind(this)).$promise;
-            },
+            },            
+            /*
             getPendingImage: function (data, callback) {
                 var cb = callback || angular.noop;
 
@@ -29,10 +32,11 @@
                         return cb(err);
                     }.bind(this)).$promise;
             },
+            */
             get: function (data, callback) {
                 var cb = callback || angular.noop;
 
-                return CustomerResource.get(data,
+                return AccountResource.get(data,
                     function (response) {
                         return cb(response);
                     },
@@ -40,6 +44,7 @@
                         return cb(err);
                     }.bind(this)).$promise;
             },
+            /*
             uploadImage: function (img, onProgress, onSuccess) {
 
                 return Upload.upload({
@@ -50,10 +55,11 @@
     	        .progress(onProgress)
     	        .success(onSuccess);
             },
+            */
             create: function (data, callback) {
                 var cb = callback || angular.noop;
 
-                return CustomerResource.save(data,
+                return AccountResource.save(data,
                     function (response) {
                         return cb(response);
                     },
@@ -64,7 +70,18 @@
             update: function (data, callback) {
                 var cb = callback || angular.noop;
 
-                return CustomerResource.update(data,
+                return AccountResource.update(data,
+                    function (response) {
+                        return cb(response);
+                    },
+                    function (err) {
+                        return cb(err);
+                    }.bind(this)).$promise;
+            },
+            changePassword: function (data, callback) {
+                var cb = callback || angular.noop;
+
+                return PasswordResource.update(data,
                     function (response) {
                         return cb(response);
                     },
@@ -75,7 +92,7 @@
             delete: function (data, callback) {
                 var cb = callback || angular.noop;
 
-                return CustomerResource.delete(data,
+                return AccountResource.delete(data,
                     function (response) {
                         return cb(response);
                     },

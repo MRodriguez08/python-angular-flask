@@ -1,0 +1,31 @@
+{
+    "account": {
+    	"register": {
+    		"title": "Registrarme",
+    		"messages": {
+	            "error": {
+	                "authentication": "<strong>Authentication failed!</strong> Please check your credentials and try again."
+	            },
+	            "success": "Usuario registrado con exito"
+	        }
+       	},
+       	"changepassword": {
+    		"title": "Cambiar contraseña",
+    		"messages": {
+	            "error": {
+	                "passwordsnotmatch": "Las contraseñas no coinciden"
+	            },
+	            "success": "Contraseña alterada con exito"
+	        }
+       	},     
+        "labels": {
+        	"nick": "Nick",
+        	"email": "Email",
+        	"name": "Nombre",
+        	"surname": "Apellido",
+            "password": "Contraseña",
+            "passwordConfirmation": "Confirme contraseña"
+        }
+        
+    }
+}

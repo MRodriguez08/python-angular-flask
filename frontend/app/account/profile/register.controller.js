@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('carsPortal')
-    .controller('RegisterController', ['$scope', '$log', '$translate', '$state', 'AccountService', 'UiUtils',
+    .controller('ProfileController', ['$scope', '$log', '$translate', '$state', 'AccountService', 'UiUtils',
                                        function ( $scope, $log, $translate, $state, AccountService, UiUtils) {
     	
     	$scope.state = UiUtils.initState('');
@@ -12,7 +12,7 @@
     	$scope.sendUserData = function () {
             
     		AccountService.create($scope.model).then(function (response) {
-    			$scope.state = UiUtils.stateOk($translate.instant('account.register.messages.success'));
+    			$scope.state = UiUtils.stateOk($translate.instant('account.messages.success'));
     			UiUtils.clearForm($scope);
     		}).catch(function(response) {
     			$scope.error = true;

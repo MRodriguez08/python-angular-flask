@@ -17,7 +17,8 @@
                 "main": "Cuenta",
                 "login": "Ingresar",
                 "logout": "Salir",
-                "register": "Registrarme"
+                "register": "Registrarme",
+                "changepassword": "Cambiar contraseña"
             },
             "language": "Language"
         },

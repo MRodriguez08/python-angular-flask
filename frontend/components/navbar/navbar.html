@@ -11,12 +11,28 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav nav-pills navbar-right">
-                <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>
-                    &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
                 <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="account.login"><span class="glyphicon glyphicon-log-in"></span>
                     &#xA0;<span translate="global.menu.account.login">Authenticate</span></a></li>
                	<li ui-sref-active="active" ng-switch-when="false"><a ui-sref="account.register"><span class="glyphicon glyphicon-log-in"></span>
                     &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
+                <li ng-class="{active: $state.includes('account')}" class="dropdown pointer" ng-switch-when="true">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+	                    <span>
+	                        <span class="glyphicon glyphicon-user"></span>
+	                        <span class="hidden-tablet">
+	                            {{userNick}}
+	                        </span>
+	                        <b class="caret"></b>
+	                    </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    	<li ui-sref-active="active" ><a ui-sref="account.changepassword"><i class="fa fa-key"></i>
+                            &#xA0;<span translate="global.menu.account.changepassword">Change password</span></a></li>
+                    	<li role="separator" class="divider"></li>                    	
+                        <li ui-sref-active="active" ><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>
+                            &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

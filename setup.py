@@ -22,6 +22,7 @@ setup(
         'Flask==0.10.1',
         'SQLAlchemy==1.0.8',
         'Flask-SQLAlchemy==2.0',
-        'sqlalchemy-migrate==0.9.7'
+        'sqlalchemy-migrate==0.9.7',
+        'bcrypt==1.0.1'
     ]
 )

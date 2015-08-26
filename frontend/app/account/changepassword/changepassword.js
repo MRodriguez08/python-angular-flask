@@ -4,17 +4,17 @@
   angular.module('carsPortal')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('account.register', {
+            .state('account.changepassword', {
                 parent: 'account',
-                url: '/register',
+                url: '/changePassword',
                 data: {
                 	roles: [],
-                    pageTitle: 'account.title.create'
+                    pageTitle: 'account.title.profile'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/account/register/register.html',
-                        controller: 'RegisterController'
+                        templateUrl: 'app/account/changepassword/changepassword.html',
+                        controller: 'ChangePasswordController'
                     }
                 },
                 resolve: {

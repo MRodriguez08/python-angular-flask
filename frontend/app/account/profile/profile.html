@@ -4,7 +4,7 @@
 	     	<img class="img-responsive" alt="" ng-src="{{avatar}}">
 	     </div>
         <div class="col-md-4">
-            <h1 translate="account.register.title">Register</h1>
+            <h1 translate="account.title">My Profile</h1>
 
 			<div ng-show="state.success">			
 	            <div class="alert alert-success"  >
@@ -19,33 +19,33 @@
             <form ng-show="!success" name="form" role="form" novalidate ng-submit="create()" show-validation>
             
             	<div class="form-group" ng-class="{'has-error' : form.nick.$dirty && form.nick.$error.required}">
-				    <label  class="control-label" translate="account.labels.nick" for="nick">Nick</label>
+				    <label  class="control-label" translate="account.form.nick" for="nick">Nick</label>
 				    <input name="nick" ng-model="model.nick" type="text" class="form-control" id="nick" required>
 				</div>
 
 				<div class="form-group" ng-class="{'has-error' : form.name.$dirty && form.name.$error.required}">
-				    <label  class="control-label" translate="account.labels.name" for="name">Name</label>
+				    <label  class="control-label" translate="account.form.name" for="name">Name</label>
 				    <input name="name" ng-model="model.name" type="text" class="form-control" id="name" required >
 				</div>
 				
 				<div class="form-group">
-				    <label  class="control-label" translate="account.labels.surname" for="surname">Surname</label>
+				    <label  class="control-label" translate="account.form.surname" for="surname">Surname</label>
 				    <input name="surname" ng-model="model.surname" type="text" class="form-control" id="surname" >
 				</div>		
 				
 				<div class="form-group" ng-class="{'has-error' : form.email.$dirty && form.email.$error.required}">
-				    <label  class="control-label" translate="account.labels.email" for="email" >Email</label>
+				    <label  class="control-label" translate="account.form.email" for="email" >Email</label>
 				    <input name="email" ng-model="model.email" type="email" class="form-control" id="email" required>
 				</div>
 				
 				<div class="form-group" ng-class="{'has-error' : form.password.$dirty && form.password.$error.required}">
-				    <label  class="control-label" translate="account.labels.password" for="password">Password</label>
+				    <label  class="control-label" translate="account.form.password" for="password">Password</label>
 				    <input name="password" ng-model="model.password" type="password" equals="{{model.passwordConfirmation}}" 
 				    class="form-control" id="password" required>
 				</div>
 				
 				<div class="form-group" ng-class="{'has-error' : form.passwordConfirmation.$dirty && (form.passwordConfirmation.$error.required || form.passwordConfirmation.$error.equals) }">
-				    <label  class="control-label" translate="account.labels.passwordConfirmation" for="password-confirmation">Password confirmation</label>
+				    <label  class="control-label" translate="account.form.passwordConfirmation" for="password-confirmation">Password confirmation</label>
 				    <input name="passwordConfirmation" ng-model="model.passwordConfirmation" type="password"
 				    class="form-control" id="passwordConfirmation" required equals="{{model.password}}">
 				</div>		

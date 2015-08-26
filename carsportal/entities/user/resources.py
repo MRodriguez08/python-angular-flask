@@ -1,19 +1,20 @@
 from carsportal import app
 from carsportal.entities.user.services import UserService
-from carsportal.entities.user.models import User
 from carsportal.core.responseutils import response_with_status
-from flask import  jsonify, request, session, json
+from flask import request, session, json
 from carsportal.core.decorators import requires_roles, json_content
 from carsportal.core.logger import get_logger
 
 logger = get_logger(__name__)
 logger.info('users resource')
 
+
 @app.route('/users', methods=['GET'])
 def get_users():
     user_service = UserService()
-    list = user_service.get_collection()
-    return response_with_status(list)
+    _list = user_service.get_collection()
+    return response_with_status(_list)
+
 
 @app.route('/users/<int:id>', methods=['GET'])
 def get_user(id):
@@ -24,8 +25,9 @@ def get_user(id):
     else:
         return response_with_status(user.serialize)
 
+
 @app.route('/users/<int:id>', methods=['PUT'])
-@json_content(fields=['!email%e','!nick', 'name','surname'])
+@json_content(fields=['!email%e', '!nick', 'name', 'surname'])
 def update_user(id):
     data = request.get_json()
     user_service = UserService()
@@ -41,8 +43,9 @@ def delete_user(id):
         return response_with_status({'message': result}, 404)
     else:
         return response_with_status({'message': 'User deleted'}, 204)
-    
-@app.route('/register', methods=['POST'])
+
+
+@app.route('/account', methods=['POST'])
 @json_content(fields=['!email%e','!nick', 'name','surname', '!password'])
 def register():
     data = request.get_json()
@@ -50,22 +53,28 @@ def register():
     op = user_service.create(data)
     return response_with_status({'message': 'registered successfully'}, 201)
 
+
 @app.route('/authentication', methods=['POST'])
 @json_content(fields=['!user', '!password'])
 def login():
     json_data = request.json
     service = UserService()
-    auth = service.login(json_data.get('user'), json_data.get('password'))
+    try:
+        auth = service.login(json_data.get('user'), json_data.get('password'))
+    except Exception as e:
+        logger.exception(e)
     if auth is None:
-        return response_with_status({'message': 'invalid username or password'}, 403)        
+        return response_with_status({'message': 'invalid username or password'}, 403)
     else:
         session['user'] = json.dumps(auth.to_dict())
         return response_with_status({'message': 'you are logged in'}, 200)
+
 
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('user', None)
     return response_with_status({'message': 'invalid username or password'}, 403)
+
 
 @app.route('/account', methods=['GET'])
 @requires_roles(['admin', 'user'])
@@ -82,5 +91,16 @@ def get_account():
     except Exception as e:
         logger.exception(e)
         raise e
-    
+
+
+@app.route('/password/<int:id>', methods=['PUT'])
+@json_content(fields=['!password', '!passwordConfirmation'])
+@requires_roles(['admin', 'user'])
+def change_password(id):
+    data = request.get_json()
+    user_service = UserService()
+    user_service.change_password(id, data)
+    return response_with_status({'message':
+                                'account.changepassword.messages.success'}, 201)
+
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'

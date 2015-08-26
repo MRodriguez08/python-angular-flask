@@ -19,7 +19,8 @@
             // Update the language
             Language.getCurrent().then(function (language) {
                 $translate.use(language);
-            });
+            });           
+            
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {

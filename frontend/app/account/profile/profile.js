@@ -4,22 +4,22 @@
   angular.module('carsPortal')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('account.register', {
+            .state('account.profile', {
                 parent: 'account',
-                url: '/register',
+                url: '/profile',
                 data: {
                 	roles: [],
-                    pageTitle: 'account.title.create'
+                    pageTitle: 'account.title.profile'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'app/account/register/register.html',
-                        controller: 'RegisterController'
+                        templateUrl: 'app/account/profile/profile.html',
+                        controller: 'ProfileController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                        $translatePartialLoader.addPart('account');
+                        $translatePartialLoader.addPart('register');
                         return $translate.refresh();
                     }]
                 }

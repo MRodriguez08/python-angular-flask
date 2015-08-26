@@ -6,6 +6,10 @@
 	        $scope.isAuthenticated = Principal.isAuthenticated;
 	        $scope.isInRole = Principal.isInRole;
 	        $scope.$state = $state;
+	        
+	        Principal.identity(false).then(function(data) {
+	        	$scope.userNick = data.nick;
+	        });
 	
 	        $scope.logout = function () {
 	            Auth.logout();
