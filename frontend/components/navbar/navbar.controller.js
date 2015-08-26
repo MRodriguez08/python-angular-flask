@@ -8,9 +8,11 @@
 	        $scope.$state = $state;
 	        
 	        Principal.identity(false).then(function(data) {
-	        	$scope.userNick = data.nick;
+	        	if (data != null){
+	        		$scope.userNick = data.nick;
+	        	}	        	
 	        });
-	
+	        
 	        $scope.logout = function () {
 	            Auth.logout();
 	            $state.go('home');

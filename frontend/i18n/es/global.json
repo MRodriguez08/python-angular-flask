@@ -9,7 +9,8 @@
             "back": "Volver",
             "accept": "Aceptar",
             "confirm": "Confirmar",
-            "cancel": "Cancelar"
+            "cancel": "Cancelar",
+            "login" : "Ingresar"
         },
         "menu": {
             "home": "Home",
@@ -47,7 +48,8 @@
                 "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
             },
             "error": {
-                "internalServerError" : "Error interno de la aplicacion"
+                "500": "Error interno de la aplicacion",
+                "403": "You are not authorized to access the page."
             },
             "validate": {
                 "newpassword": {

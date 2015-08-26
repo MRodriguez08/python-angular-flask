@@ -17,14 +17,23 @@
 	            },
 	            "success": "Contraseña alterada con exito"
 	        }
-       	},     
+       	},
+       	"login": {
+	        "title": "ingresar al sistema",
+	        "messages": {
+	            "error": {
+	                "authentication": "<strong>Authentication failed!</strong> Please check your credentials and try again."
+	            }
+	        }
+	    },
         "labels": {
         	"nick": "Nick",
         	"email": "Email",
         	"name": "Nombre",
         	"surname": "Apellido",
             "password": "Contraseña",
-            "passwordConfirmation": "Confirme contraseña"
+            "passwordConfirmation": "Confirme contraseña",
+            "login" : "Nick ó Email"
         }
         
     }
